@@ -31,6 +31,55 @@ body {
   background: var(--bg);
 }
 
+html[lang="zh-CN"] body {
+  font-family: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+}
+
+.lang-switch {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.lang-btn {
+  margin: 0;
+  padding: 0.2rem 0.15rem;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.lang-btn:hover {
+  color: var(--text);
+}
+
+.lang-btn.is-active {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.lang-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.lang-divider {
+  color: var(--border);
+  font-size: 0.8rem;
+  user-select: none;
+}
+
 .page {
   display: flex;
   flex-direction: column;
@@ -72,6 +121,24 @@ body {
   color: var(--text-muted);
   text-align: left;
   text-wrap: pretty;
+}
+
+/* Chinese body text: justify so it doesn’t look left-heavy in a centered card */
+html[lang="zh-CN"] .bio {
+  text-align: justify;
+  text-justify: inter-ideograph;
+  text-align-last: left;
+  line-height: 1.85;
+  letter-spacing: 0.02em;
+  text-wrap: wrap;
+}
+
+html[lang="zh-CN"] .name {
+  letter-spacing: 0.12em;
+}
+
+html[lang="zh-CN"] .tagline {
+  letter-spacing: 0.08em;
 }
 
 .links {
@@ -125,6 +192,11 @@ body {
 }
 
 @media (max-width: 480px) {
+  .lang-switch {
+    top: 1rem;
+    right: 1rem;
+  }
+
   .card {
     padding: 2rem 1.25rem 1.75rem;
   }
